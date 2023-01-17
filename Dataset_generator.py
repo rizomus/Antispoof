@@ -1,5 +1,6 @@
-from tensorflow.keras.utils import Sequence
+from tensorflow.keras.utils import Sequence 
 from tensorflow.keras.applications.mobilenet import preprocess_input
+
 
 class DS_generator(Sequence):
 
@@ -65,12 +66,10 @@ class DS_generator(Sequence):
         x_batch = self.x_train[indices]
         y_batch = self.y_train[indices]
 
-        if np.random.normal() < 0.99:
+        if np.random.normal() < 0.5:
             x_batch = self.flip(x_batch)
         if np.random.normal() < 0.3:
             x_batch = self.apply_grid_mask(x_batch)
         x_batch = preprocess_input(x_batch)
 
         return x_batch, y_batch
-        
-train_gen = DS_generator(train_crop, labels_train, batch_size=512)
