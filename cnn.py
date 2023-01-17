@@ -21,4 +21,27 @@ labels_train, labels_test - numpy arrays, shape=(None, 1) - метки клас�
 
 '''
 
+base_model = MobileNet(weights='imagenet', include_top=False)
 
+inp = base_model.output
+x = GlobalAveragePooling2D()(inp)
+x = Dense(256, 'relu')(x) 
+x = Dense(128, 'relu')(x) 
+classificator = Dense(1, 'sigmoid')(x)
+
+model  = Model(inputs=base_model.input, outputs=classificator)
+
+for layer in model.layers[:-14]:
+    layer.trainable = False
+
+for layer in model.layers[-14:]:
+    layer.trainable = True
+
+model.compile(optimizer=Adam(0.001), loss='binary_crossentropy', metrics=['accuracy'])
+
+history = model.fit(train_gen,
+                    epochs=75, 
+                    batch_size=512, 
+                    validation_data=[test_crop, labels_test],
+                    validation_batch_size=700,
+                    shuffle=True)
