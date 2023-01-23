@@ -57,6 +57,8 @@ def LBP_hists(image, n_bins=128):
     
 x_train = []
 x_test = []
+y_train = labels_train
+y_test = labels_test
 
 for x in train_data:
     hist, bins = LBP_hists(x, n_bins=128)
