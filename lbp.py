@@ -47,9 +47,24 @@ def LBP_hists(image, n_bins=128):
 
     return hist_list, bins
     
+# load data
+
+import joblib
+
+with open('/train_data/train_crop', 'rb') as f:
+    train_data = joblib.load(f)
+with open('/train_data/labels_train', 'rb') as f:
+    labels_train = joblib.load(f)
+
+with open('/train_data/test_crop', 'rb') as f:
+    test_data = joblib.load(f)
+with open('/train_data/labels_test', 'rb') as f:
+    labels_test = joblib.load(f)
     
-# ...load train_data, test_data - списки трёхканальных изображений с кропами face detection.
-    
+# Вычисление local binary patterns для тренировочной и тестовой выборок.
+
+            # train_data, test_data - списки трёхканальных изображений с кропами face detection.
+            # labels_train, labels_test - метки изображений: 0 - LIVE, 1 - ATTACK    
     
 x_train = []
 x_test = []
