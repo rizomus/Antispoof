@@ -82,7 +82,7 @@ for x in test_data:
 
 rf = RandomForestClassifier(100, n_jobs=2)
 rf.fit(x_train, y_train)
-# rf.score(x_test, y_test) == 0.94 
+# rf.score(x_test, y_test) == 0.86 
 
 
 # Для снижение размера вектора признаков применяется метод главных компонент.
