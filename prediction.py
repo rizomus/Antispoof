@@ -83,7 +83,11 @@ def spoofing_detector(image_files, report=True):
 
     '''    
     crops, double_crops, split_crops, file_names = face_detection(image_files)
-
+    
+    if not(crops):
+        print('No detections')
+        return
+    
     lbp_features = []
     lbp_features = get_lbp_features(crops)
     pca_features = pca_transformer.transform(lbp_features)
