@@ -43,7 +43,9 @@ def face_detection(IMAGE_FILES):
                 print(f'No image {file}')
                 continue
 
-            if not results.detections: continue
+            if not results.detections: 
+                print(f'{file}: Face not detected')
+                continue
             
             for detection in results.detections:
                 if not(image is None):
