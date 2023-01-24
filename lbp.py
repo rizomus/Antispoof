@@ -47,12 +47,11 @@ def LBP_hists(image, n_bins=128):
 
     return hist_list, bins
     
-    
+'''
 # load data...
             # train_data, test_data - списки трёхканальных изображений с кропами face detection.
             # labels_train, labels_test - метки изображений: 0 - LIVE, 1 - ATTACK 
-
-    
+        
 # Вычисление local binary patterns для тренировочной и тестовой выборок.
     
 x_train = []
@@ -83,3 +82,5 @@ pca.fit(x_train)
 
 pca_train = pca.transform(x_train)
 pca_test = pca.transform(x_test)
+
+'''
