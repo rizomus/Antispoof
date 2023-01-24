@@ -21,9 +21,9 @@ model_split = load_model('model_split.keras')
 
 
 def face_detection(IMAGE_FILES):
-  '''
-  Возвращает изображения лиц, найденных на изображениях (IMAGE_FILES - список путей к файлам изображений)
-  '''
+    
+
+
     with mp_face_detection.FaceDetection(
         model_selection=1, min_detection_confidence=0.5) as face_detection:
 
